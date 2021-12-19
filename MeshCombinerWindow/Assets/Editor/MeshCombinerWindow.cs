@@ -19,7 +19,7 @@ public class MeshCombinerWindow : EditorWindow
 	private bool createMultiMaterialMesh = false, combineInactiveChildren = false, deactivateCombinedChildren = true,
 		deactivateCombinedChildrenMeshRenderers = false, generateUVMap = false, destroyCombinedChildren = false;
 	
-	private static string folderPath = "Prefabs/CombinedMeshes";
+	private static string folderPath = "Resources/CombinedMeshes";
 	
 	[SerializeField]
 	[Tooltip("MeshFilters with Meshes which we don't want to combine into one Mesh.")]
@@ -442,7 +442,7 @@ public class MeshCombinerWindow : EditorWindow
 		meshRenderers[0].sharedMaterials = uniqueMaterialsList.ToArray();
 
 		Mesh combinedMesh = new Mesh();
-		combinedMesh.name = name;
+		combinedMesh.name = targetGameObject.name;
 
 		#if UNITY_2017_3_OR_NEWER
 		if (verticesLength > Mesh16BitBufferVertexLimit)
